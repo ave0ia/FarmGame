@@ -1,0 +1,101 @@
+
+.storePopup {
+  position: fixed; /* Fix position on screen */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 1001; /* Above overlay */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  max-width: 400px;
+  width: 90%;
+}
+
+.storeOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000; /* Below popup */
+}
+
+
+.title {
+  color: #e75480; /* strong pink */
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.buyButton {
+  background: #e75480;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 18px;
+  margin-left: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.buyButton:disabled {
+  background: #f8bbd0;
+  cursor: not-allowed;
+}
+
+.seedList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.seedItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.seedName {
+  font-weight: bold;
+  color: #222;
+}
+
+.seedPrice {
+  color: #888;
+  margin-left: 8px;
+}
+
+.seedCount {
+  color: #1976d2;
+  margin-left: 12px;
+  font-size: 0.95em;
+}
+
+.message {
+  text-align: center;
+  margin: 18px 0 0 0;
+  color: #388e3c;
+  font-weight: 500;
+}
+
+.closeButton {
+  display: block;
+  margin: 24px auto 0 auto;
+  background: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 28px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.closeButton:hover {
+  background: #d32f2f;
+}

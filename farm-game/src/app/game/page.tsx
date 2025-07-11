@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Tarla from "../components/tarla/Tarla";
 import { BalanceContext } from "../contexts/BalanceContext";
 import { useContext, useState } from "react";
-import StorePopup from "../components/store/Store"; // Adjust the path if needed
+import StorePopup from "../components/store/Store";
 
 export default function Home() {
   const router = useRouter();
@@ -16,15 +16,25 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <div className={styles.title}>Welcome to Farm Game!</div>
-      <button> Balance: {balance} </button>
-      <button onClick={() => setStoreOpen(true)}>Store</button>
+    <div className={styles.gameContainer}>
+      <header className={styles.header}>
+        <div className={styles.title}> Welcome to Farm Game! </div>
+        <div className={styles.topBar}>
+          <span className={styles.balance}> Balance: {balance} $ </span>
+          <button className={styles.storeButton} onClick={() => setStoreOpen(true)}>
+           Store
+          </button>
+          <button className={styles.exitButton} onClick={handleBack}>
+            Exit
+          </button>
+        </div>
+      </header>
 
-      <Tarla />
+      <main className={styles.main}>
+        <Tarla />
+      </main>
+
       {storeOpen && <StorePopup onClose={() => setStoreOpen(false)} />}
-
-      <button onClick={handleBack}>Exit</button>
     </div>
   );
 }

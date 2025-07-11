@@ -24,7 +24,7 @@ export default function SignUp() {
 
     users[name] = pwd;
     localStorage.setItem("users", JSON.stringify(users));
-    alert("Sign up succesful! Redirecting...")
+    alert("Sign up successful! Redirecting...");
 
     router.push("/signin");
   }
@@ -34,31 +34,33 @@ export default function SignUp() {
   }
 
   return (
-    <div>
-      <h1 className={styles.title}>Sign Up Page</h1>
-      <div>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="username"
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={pwd}
-            onChange={(e) => setPwd(e.target.value)}
-            placeholder="password"
-          />
-        </label>
-        <div>
-          <button onClick={handleSave}>Sign Up</button>
-          <button onClick={handleBack}>Back</button>
-        </div>
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <div className={styles.title}>Sign Up</div>
+        <input
+          className={styles.input}
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Username"
+        />
+        <input
+          className={styles.input}
+          type="password"
+          value={pwd}
+          onChange={(e) => setPwd(e.target.value)}
+          placeholder="Password"
+        />
+        <button className={styles.button} onClick={handleSave}>
+          Sign Up
+        </button>
+        <button
+          className={styles.button}
+          onClick={handleBack}
+          style={{ background: "#bdbdbd", color: "#333", marginTop: "8px" }}
+        >
+          Back
+        </button>
       </div>
     </div>
   );

@@ -1,16 +1,8 @@
 import React, { useContext, useState } from "react";
 import { BalanceContext } from "../../contexts/BalanceContext";
-
-type Seed = {
-  id: number;
-  name: string;
-  price: number;
-};
-
-const seeds: Seed[] = [
-  { id: 1, name: "Daisy Seed", price: 10 },
-  { id: 2, name: "Tulip Seed", price: 20 },
-];
+import { SeedInventoryContext } from "../../contexts/SeedsInventoryContext";
+import { SEEDS } from "../../data/seeds";
+import styles from "./Store.module.css";
 
 type StorePopupProps = {
   onClose: () => void;
@@ -18,11 +10,13 @@ type StorePopupProps = {
 
 export default function StorePopup({ onClose }: StorePopupProps) {
   const { balance, setBalance } = useContext(BalanceContext);
+  const { inventory, addSeed } = useContext(SeedInventoryContext);
   const [message, setMessage] = useState<string>("");
 
-  function buySeed(seed: Seed) {
+  function buySeed(seed: { id: number; name: string; price: number }) {
     if (balance >= seed.price) {
       setBalance(balance - seed.price);
+      addSeed(seed.id);
       setMessage(`You bought a ${seed.name}!`);
     } else {
       setMessage("Not enough balance!");
@@ -30,26 +24,35 @@ export default function StorePopup({ onClose }: StorePopupProps) {
   }
 
   return (
-    <div>
-      <h2>Store</h2>
-      <ul>
-        {seeds.map((seed) => (
-          <li key={seed.id} style={{ marginBottom: 10 }}>
-            <strong>{seed.name}</strong> - ${seed.price}
-            <button
-              onClick={() => buySeed(seed)}
-              style={{ marginLeft: 10 }}
-              disabled={balance < seed.price}
-            >
-              Buy
-            </button>
-          </li>
-        ))}
-      </ul>
-      {message && <p>{message}</p>}
-      <button onClick={onClose} style={{ marginTop: 15 }}>
-        Close
-      </button>
-    </div>
+    <>
+      <div className={styles.storeOverlay} onClick={onClose} />
+      <div className={styles.storePopup} role="dialog" aria-modal="true">
+        <h2 className={styles.title}>Store</h2>
+        <ul className={styles.seedList}>
+          {SEEDS.map((seed) => (
+            <li key={seed.id} className={styles.seedItem}>
+              <span>
+                <span className={styles.seedName}>{seed.name}</span>{" "}
+                <span className={styles.seedPrice}>${seed.price}</span>{" "}
+                <span className={styles.seedCount}>
+                  (You own: {inventory[seed.id] ?? 0})
+                </span>
+              </span>
+              <button
+                onClick={() => buySeed(seed)}
+                className={styles.buyButton}
+                disabled={balance < seed.price}
+              >
+                Buy
+              </button>
+            </li>
+          ))}
+        </ul>
+        {message && <p className={styles.message}>{message}</p>}
+        <button onClick={onClose} className={styles.closeButton}>
+          Close
+        </button>
+      </div>
+    </>
   );
 }

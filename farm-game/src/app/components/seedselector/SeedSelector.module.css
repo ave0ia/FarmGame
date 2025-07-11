@@ -1,0 +1,58 @@
+.popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 120px;
+  background: #fffbe7;
+  border: 2px solid #4caf50;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(60, 60, 0, 0.1);
+  padding: 10px 10px 8px 10px;
+  z-index: 20;
+}
+
+.seedList {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.seedItem {
+  margin: 0;
+}
+
+.seedButton {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  min-width: 60px;
+}
+.seedButton:hover {
+  background: #388e3c;
+}
+
+.cancelButton {
+  background: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cancelButton:hover {
+  background: #b71c1c;
+}

@@ -1,13 +1,16 @@
 .tarla {
-  align-items: space-around;
-  display: flex;
-  gap: 10px;
-  border: 10px;
-  border-radius: 10px;
-  border-style: solid;
-  flex-wrap: wrap;
-  background-color: sandybrown;
-  height: 250px;
-  width: 250px;
-  border-color: sandybrown;
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    70px
+  ); /* 4 columns, each 70px (match your .plot size) */
+  grid-template-rows: repeat(4, 70px); /* 4 rows, each 70px */
+  gap: 10px; /* equal gap between tiles */
+  background: #f5e6c8;
+  border: 2px solid #a0522d; /* thinner border */
+  border-radius: 18px;
+  padding: 18px; /* equal space around the grid */
+  box-shadow: 0 4px 16px rgba(160, 82, 45, 0.1);
+  justify-content: center; /* center grid horizontally if parent is wider */
+  align-content: center; /* center grid vertically if parent is taller */
 }
