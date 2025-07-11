@@ -1,8 +1,10 @@
+"use client";
 import React, { useContext, useState } from "react";
 import { BalanceContext } from "../../contexts/BalanceContext";
 import { SeedInventoryContext } from "../../contexts/SeedsInventoryContext";
 import { SEEDS } from "../../data/seeds";
 import styles from "./Store.module.css";
+import { useRouter } from "next/navigation";
 
 type StorePopupProps = {
   onClose: () => void;
@@ -12,6 +14,11 @@ export default function StorePopup({ onClose }: StorePopupProps) {
   const { balance, setBalance } = useContext(BalanceContext);
   const { inventory, addSeed } = useContext(SeedInventoryContext);
   const [message, setMessage] = useState<string>("");
+  const router = useRouter();
+
+  function handleStore() {
+    router.push("/store");
+  }
 
   function buySeed(seed: { id: number; name: string; price: number }) {
     if (balance >= seed.price) {
@@ -49,6 +56,9 @@ export default function StorePopup({ onClose }: StorePopupProps) {
           ))}
         </ul>
         {message && <p className={styles.message}>{message}</p>}
+        <button onClick={handleStore} className={styles.buyButton}>
+          Store Page
+        </button>
         <button onClick={onClose} className={styles.closeButton}>
           Close
         </button>
