@@ -1,11 +1,14 @@
+"use client";
 import styles from "./Plot.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { BalanceContext } from "@/app/contexts/BalanceContext";
 
 const states = [' ', 'T', 'F', 'B', 'Ç', 'K'];
 
 export default function Plot() {
   const [index, setIndex] = useState(0);
   const [growing, setGrowing] = useState(false);
+  const { balance, setBalance } = useContext(BalanceContext);
 
   useEffect(() => {
     if (!growing) return;
@@ -22,11 +25,20 @@ export default function Plot() {
 
   function handleClick() {
     if (!growing) {
-      setIndex(1);
-      setGrowing(true);
+        if (balance<10) {
+            alert("Insufficient balance!");
+        }
+        else {
+            setIndex(1);
+            setGrowing(true);
+            setBalance(balance - 10);
+        }
     } else {
-      setGrowing(false);
-      setIndex(0);
+        setGrowing(false);
+        setIndex(0);
+        if (currentChar ==='Ç') {
+            setBalance(balance + 20);
+        }
     }
   }
 
