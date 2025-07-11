@@ -6,11 +6,11 @@ export default function Home() {
     const router = useRouter();
 
     function handleSignIn(){
-     router.push("./pages/signin")
+     router.push("/signin")
     }
 
     function handleSignUp(){
-      router.push("./pages/signup")
+      router.push("/signup")
     }
   return (
     <div>

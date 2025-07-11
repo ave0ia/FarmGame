@@ -6,13 +6,13 @@ export default function Home() {
     const router = useRouter();
 
     function handleBack(){
-      router.push("../")
+      router.push("/")
     }
   return (
     <div>
-      <div className={styles.title}>Sign Up Page</div>
-      <>
-      <button onClick={handleBack}>Back</button>
+      <div className={styles.title}>Welcome to Farm Game!</div>
+      <> 
+      <button onClick={handleBack}>Return</button>
       </>
     </div>
   );
