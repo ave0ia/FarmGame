@@ -1,0 +1,13 @@
+.tarla {
+  align-items: space-around;
+  display: flex;
+  gap: 10px;
+  border: 10px;
+  border-radius: 10px;
+  border-style: solid;
+  flex-wrap: wrap;
+  background-color: sandybrown;
+  height: 250px;
+  width: 250px;
+  border-color: sandybrown;
+}
